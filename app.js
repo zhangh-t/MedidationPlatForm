@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var session = require('express-session');
+var sessionControl = require('./public/javascripts/sessioncontrol')
 
 var app = express();
 
@@ -14,15 +16,26 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-//中间件
+// 中间件
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+//使用session会话控制
+app.use(session({
+    secret: 'MedidationPlatFormCreatedByZhangh-tYouMotherfucker',   //cookie签名信息
+    coockie: {maxAge: 60 * 1000 * 30},                              //cookie有效期时长
+    resave:false,                                                   //是否在session没有被修改的时候保存
+    name:'MedidationPlatForm',                                      //cookie名称，不知道是不是
+    saveUninitialized:false                                         //是否强制创建一个未初始化的session
+}));
 
+app.use(sessionControl.sessionControl.globalSessionCheck);    //全局的session控制，
+                                                              //在需要检测登录状态的页面检查一下
+                                                              //session里是不是有登录状态
+app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 // app.use('/路径', js文件);
