@@ -1,0 +1,5 @@
+{"usingComponents": {
+    "wxc-loadmore": "../../dist/packages/@minui/wxc-loadmore/dist/index",
+    "wxc-dialog": "../../dist/packages/@minui/wxc-dialog/dist/index",
+    "wxc-loading": "../../dist/packages/@minui/wxc-loading/dist/index"
+  }}

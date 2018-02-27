@@ -1,0 +1,7 @@
+<!--index.wxml-->
+<view class="container">
+  <uh-loading 
+    class = "loading"
+    is-show = "{{true}}">
+  </uh-loading>
+</view>

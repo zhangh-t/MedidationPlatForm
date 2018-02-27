@@ -1,0 +1,34 @@
+<!--pages/login/login.wxml-->
+<view class='container'>
+   <button bindtap="onLoginByWechat"> 微信登录 </button>
+   <view class = "split"> </view>
+   <button bindtap="onLoginByUsrnameAndPsw"> 用户名密码登录 </button>
+   <view class = "split-10"> </view>
+   <view class = "signin-hint" bindtap='onSigninTaped'> 
+    <image src = "{{signinhintimage}}" class = "siginin-hint-img"></image>
+    <text class = "signin-hint-text"> 没有账号?点我注册吧</text>
+   </view>
+   <view class = "split-60"> </view>
+   <wxc-loadmore is-end="{{true}}" text="请您先登录"></wxc-loadmore>
+</view>
+<wxc-dialog
+  style="opacity:{{opacity}}"
+  class="wxc-dialog" 
+  title="{{dialogtitle}}"
+  content="{{dialogcontent}}"
+  content-color="{{dialogcontentcolor}}" 
+  confirm-text="{{confirmtext}}"
+  cancel-text="取消" 
+  bindconfirm="onConfirm" 
+  bindcancel="onCancel">
+  <input class="input" placeholder="用户名" bindinput='onUsrnameInput' value="{{usrnamevalue}}"/>
+  <view class = "split-10"> </view>
+  <input class="input" placeholder="密码" password='true' bindinput='onPswdInput' value="{{pswdvalue}}"/>
+  <view class = "split-10"> </view>
+</wxc-dialog>
+<wxc-loading
+  is-show="{{showloading}}"
+  image="{{loadingimg}}"  
+  slip="{{loadingslip}}"
+  type="mgj">
+</wxc-loading>

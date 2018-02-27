@@ -1,0 +1,26 @@
+<!--pages/account/account.wxml-->
+<wxc-tab
+    bind:tabchange="onClick"
+    default-index="{{0}}"
+    active-text-color="#108ee9"
+    active-line-color="#108ee9"
+    animate="{{true}}"
+    component-id="uniquetab"
+  >
+    <wxc-tab-panel
+      wx:key="usrnamepswd"
+      tab-index="{{0}}"
+      label="{{tab1title}}"
+      component-id="uniquetab"
+    >
+      CCC
+    </wxc-tab-panel>
+    <wxc-tab-panel
+      wx:key="idcode"
+      tab-index="{{1}}"
+      label="{{tab2title}}"
+      component-id="uniquetab"
+    >
+      DDD
+    </wxc-tab-panel>
+</wxc-tab>

@@ -1,0 +1,9 @@
+<!--pages/error/error.wxml-->
+<wxc-abnor
+    type="{{type}}"
+    image="{{img}}"
+    title="{{title}}"
+    tip="{{tip}}"
+    button="{{button}}"
+    bind:abnortap="onAbnorTap">
+</wxc-abnor>

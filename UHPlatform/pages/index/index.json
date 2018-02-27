@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "uh-loading": "../../components/loading/loading"
+  }
+}

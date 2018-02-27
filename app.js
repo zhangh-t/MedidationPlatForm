@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var signin = require('./routes/signin')
 var session = require('express-session');
 var sessionControl = require('./public/javascripts/sessioncontrol')
 
@@ -32,12 +33,11 @@ app.use(session({
     saveUninitialized:false                                         //是否强制创建一个未初始化的session
 }));
 
-app.use(sessionControl.sessionControl.globalSessionCheck);    //全局的session控制，
-                                                              //在需要检测登录状态的页面检查一下
-                                                              //session里是不是有登录状态
+
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
+app.use('/signin', signin);
 // app.use('/路径', js文件);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
