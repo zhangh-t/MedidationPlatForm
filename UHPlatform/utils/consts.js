@@ -1,5 +1,5 @@
 function UHConsts() {
-  this.hostUrl = "http://x200836s64.imwork.net/";
+  this.hostUrl = "http://127.0.0.1:4440/";
   this.hostSigninUrl = this.hostUrl + "signin"
   this.staticRcUrl = {
     indexLoadingimg : this.hostUrl + "images/loadingimg.png",

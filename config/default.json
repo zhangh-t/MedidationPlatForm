@@ -1,0 +1,10 @@
+{
+	"dbconfig" : {
+		"dbname" : "uhinfos",
+		"usrname"  : "root",
+		"pswd"     : "",
+		"port"     : 3306,
+		"host"     : "localhost",
+		"max"	   : 8
+	}
+}

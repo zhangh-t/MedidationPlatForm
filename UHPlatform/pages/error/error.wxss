@@ -1,1 +1,4 @@
 /* pages/error/error.wxss */
+.abnor .abnor__btn{
+  background-color: #000000;
+}

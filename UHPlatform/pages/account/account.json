@@ -1,7 +1,9 @@
 {
   "usingComponents": {
+    "wxc-flex": "../../dist/packages/@minui/wxc-flex/dist/index",
     "uh-loading": "../../components/loading/loading",
     "wxc-tab" : "../../dist/packages/@minui/wxc-tab/dist/index",
-    "wxc-tab-panel": "../../dist/packages/@minui/wxc-tab/dist/panel"
+    "wxc-tab-panel": "../../dist/packages/@minui/wxc-tab/dist/panel",
+    "wxc-dialog": "../../dist/packages/@minui/wxc-dialog/dist/index"
   }
 }

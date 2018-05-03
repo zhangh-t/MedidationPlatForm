@@ -50,9 +50,8 @@ Page({
     let connectionFailCallBack = function () { 
       redirectTo(consts.redirectUrl.conectFaildUrl)
     }
-    
+    //测试一下连接
     loginUtils.connectionTest(connectionSucCallBack,
-      connectionFailCallBack);
-    
+      connectionFailCallBack);    
   }
 })

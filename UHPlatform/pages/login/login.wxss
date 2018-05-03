@@ -2,6 +2,13 @@
 button {
   font-size : 13px;
   width : 200px;
+  background-color: #6778AB;
+  border-radius: 0;
+  color : white
+}
+
+button:active {
+  background-color: #9AABDE
 }
 
 .split {
@@ -26,6 +33,7 @@ input {
 .signin-hint-text {
   font-size : 12px;
   padding-left:5px;
+  padding-top:1px;
   color: gray
 }
 

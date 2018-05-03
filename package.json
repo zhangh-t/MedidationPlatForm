@@ -5,10 +5,16 @@
   "scripts": {
     "start": "node ./bin/www"
   },
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
   "dependencies": {
     "@minui/wxc-abnor": "^1.0.7",
     "@minui/wxc-avatar": "^1.0.4",
     "@minui/wxc-dialog": "^1.0.8",
+    "@minui/wxc-flex": "^1.0.5",
     "@minui/wxc-loading": "^1.0.8",
     "@minui/wxc-loadmore": "^1.0.5",
     "@minui/wxc-tab": "^1.0.7",
@@ -17,7 +23,9 @@
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-export-extensions": "^6.22.0",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-es2015": "^6.24.1",
     "body-parser": "~1.18.2",
+    "config": "^1.30.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.15.5",
@@ -25,6 +33,8 @@
     "jade": "~1.11.0",
     "min": "^0.1.17",
     "morgan": "~1.9.0",
+    "mysql2": "^1.5.2",
+    "sequelize": "^4.35.1",
     "serve-favicon": "~2.4.5"
   }
 }

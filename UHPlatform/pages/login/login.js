@@ -88,12 +88,12 @@ Page({
 
   //用户名密码登录流程
   onLoginByUsrnameAndPsw: function () {
-    wx.redirectTo({
+    wx.navigateTo({
       url: consts.redirectUrl.accountUrlForLogin,
     })
   },
   onSigninTaped: function () {
-    wx.redirectTo({
+    wx.navigateTo({
       url: consts.redirectUrl.accountUrlForSignin,
     })
   }

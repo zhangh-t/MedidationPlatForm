@@ -9,12 +9,17 @@ Page({
     button:""
   },
 
+  errType : -1,
+  abnorRedirection : "",
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var errType = options.type;
-    this.setData(errConfig.config(errType));
+    this.errType = options.type;
+    this.setData(errConfig.config(this.errType));
+    if (this.errType == 1) {
+      this.abnorRedirection = "../index/index";
+    }
   },
 
   /**
@@ -65,7 +70,7 @@ Page({
   },
   onAbnorTap : function () {
     wx.redirectTo({
-      url: '../index/index',
+      url: this.abnorRedirection,
     })
   }
 })

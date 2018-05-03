@@ -1,1 +1,54 @@
 /* pages/account/account.wxss */
+.panel {
+  position: fixed;
+  display: flex;
+  top: 100rpx;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  align-content: center;
+}
+
+.account-box {
+  width : 500rpx;
+  height : 600rpx;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;  
+  font-size : 30rpx;
+}
+
+.group {
+  width : 100%;
+  height : auto;
+  position: relative;
+}
+
+.title {
+  color: #888;
+  margin:20rpx 20rpx auto;
+}
+
+.input {
+  border:  3rpx solid gainsboro;
+  height : 70rpx;
+  margin: 20rpx 20rpx auto;
+}
+
+button {
+  font-size : 13px;
+  background-color: #6778AB;
+  border-radius: 0;
+  color : white;
+  margin:60rpx 20rpx auto;
+}
+
+button:active {
+  background-color: #9AABDE
+}
+checkbox {
+  zoom: 50%;
+  color : #000;
+  margin:30rpx 20rpx auto;
+}

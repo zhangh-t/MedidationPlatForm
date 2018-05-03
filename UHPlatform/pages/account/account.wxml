@@ -12,8 +12,33 @@
       tab-index="{{0}}"
       label="{{tab1title}}"
       component-id="uniquetab"
+      class = "panel"
     >
-      CCC
+      <view class = "account-box">
+      <form bindsubmit='onConfirmClicked'>
+        <view class = "group">
+          <view class = "title">用户名</view>
+          <input class = "input" name = 'usernameinput'></input>
+          <view id = "username-hint">{{usernameHint}}</view>
+        </view>
+        <view class = "group">
+          <view class = "title">密码</view>
+          <input class = "input" password='true' name = 'passwordinput'></input>
+          <view id = "password-hint">{{passwordHint}}</view>
+        </view>
+        <view class = "group">
+          <button id = "confirmBtn" disabled='{{btnDisabled}}' form-type='submit'>{{btnTitle}}</button>
+        </view>
+        </form>
+        <view class = "group">
+          <checkbox-group  bindchange = "onCheckBoxChange" >
+            <checkbox 
+            value = "agreeprotocol" 
+            checked = false 
+            hidden='{{hiddenCheckBox}}'>{{checkboxValue}}</checkbox>
+          </checkbox-group>
+        </view>
+      </view>
     </wxc-tab-panel>
     <wxc-tab-panel
       wx:key="idcode"
@@ -23,4 +48,9 @@
     >
       DDD
     </wxc-tab-panel>
+    <wxc-dialog class = 'errMsgDialog' 
+    title = "{{errorDialogTitle}}" 
+    content = "{{errorContent}}" 
+    confirm-text="确定" 
+    bindconfirm="oErrorDialogConfirm"></wxc-dialog>
 </wxc-tab>
