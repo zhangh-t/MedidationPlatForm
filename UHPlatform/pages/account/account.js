@@ -125,7 +125,6 @@ Page({
       var username = e.detail.value.usernameinput;
       var password = e.detail.value.passwordinput;
       if (this.data.mode == 1) {
-        //登录
         
       }
       else {      
@@ -136,7 +135,6 @@ Page({
               //有返回
               console.log(data);
               if (data.state == 0) {
-                console.log(12312312312312)
                 that.showError(data.hint, "错误")
               }
               else {
@@ -145,7 +143,6 @@ Page({
            }, function(data) {
               //异步登录失败
              that.showError(data.hint, "错误");
-             console.log(that);
            })
         }
         else {

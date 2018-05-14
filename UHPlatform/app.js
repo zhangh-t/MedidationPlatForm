@@ -2,6 +2,7 @@
 App({
   onLaunch: function () {},
   globalData: {
-    userInfo: null
+    userInfo: null,
+    sessionid: -1,
   }
 })

@@ -46,7 +46,7 @@
       label="{{tab2title}}"
       component-id="uniquetab"
     >
-      DDD
+      
     </wxc-tab-panel>
     <wxc-dialog class = 'errMsgDialog' 
     title = "{{errorDialogTitle}}" 

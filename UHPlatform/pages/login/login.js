@@ -8,6 +8,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
     opacity: 0.1,
     usrname:"",
     pswd:"",
@@ -17,6 +18,7 @@ Page({
     dialogcontent: "",
     confirmtext:"",
     signinhintimage: consts.staticRcUrl.signInHintimg,
+    autorizehintimg: consts.staticRcUrl.authorizeHintimg,
     dialogMode : -1,
     dialogcontentcolor: "#353535",
     showloading : false,
@@ -28,7 +30,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
+     
   },
 
   /**
@@ -82,8 +84,21 @@ Page({
 
   //微信账户登录流程
   onLoginByWechat: function () {
+    var that = this;
     //微信登录并记录sessionid
-    loginUtils.loginByWechat(this);
+    wx.showToast({
+      title: '正在登录',
+      icon: 'loading',
+      duration: 10000
+    })
+    loginUtils.loginByWechat().then(function (data) {
+      //登录成功
+      wx.hideToast();
+    },
+    function (data) {
+      wx.hideToast();
+      that.showError(data.error, "错误");
+    }); 
   },
 
   //用户名密码登录流程
@@ -96,5 +111,19 @@ Page({
     wx.navigateTo({
       url: consts.redirectUrl.accountUrlForSignin,
     })
+  },
+  showError: function (msg, title) {
+    this.setData({ errorDialogTitle: title, errorContent: msg });
+    let dialog = this.selectComponent('.errMsgDialog');
+    if (dialog) dialog.show();
+  },
+  oErrorDialogConfirm : function () {
+    let dialog = this.selectComponent('.errMsgDialog')
+    dialog && dialog.hide();
+  },
+  bindGetUserInfo : function (e) {
+     getApp().globalData.userInfo = e.detail.userInfo;
+     console.log(getApp().globalData.userInfo);
   }
+
 })

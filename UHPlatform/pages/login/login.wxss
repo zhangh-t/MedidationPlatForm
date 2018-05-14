@@ -12,7 +12,7 @@ button:active {
 }
 
 .split {
-  height : 30px;
+  height : 60px;
 }
 
 .split-10 {
@@ -30,21 +30,41 @@ input {
   padding-left: 5px;
 }
 
-.signin-hint-text {
+.hinttext {
+  font-size : 12px;
+  padding-left:5px;
+  padding-top:8px;
+  color: rgba(160, 160, 160, 30)
+}
+
+.hintbtn {
   font-size : 12px;
   padding-left:5px;
   padding-top:1px;
-  color: gray
+  color: rgba(160, 160, 160, 30);
+  width: fit-content;
+  height: 30px;
+  background-color: #ffffff;
+  border: none;
+}
+.hintbtn::after {
+  border: none;
 }
 
-.signin-hint {
+.hintbtn:active {
+  background-color: #ffffff
+}
+
+.hint {
   display:flex;
   flex-direction: row;
+  justify-content:center;
+  margin-top: 2px;
 }
 
-.siginin-hint-img {
+.hintimg {
   width:16px;
   height:16px;
-  margin:0;
-  padding:0;
+  margin:0px;
+  padding-top:8px;
 }

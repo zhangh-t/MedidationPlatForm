@@ -7,7 +7,8 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var signin = require('./routes/signin')
+var signin = require('./routes/signin');
+var login = require('./routes/login')
 var session = require('express-session');
 var sessionControl = require('./public/javascripts/sessioncontrol')
 
@@ -38,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', index);
 app.use('/users', users);
 app.use('/signin', signin);
+app.use('/login', login);
 // app.use('/路径', js文件);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

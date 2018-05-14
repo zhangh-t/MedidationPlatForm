@@ -30,8 +30,69 @@ function loginUtils() {
     })
   }
   //微信登录
-  this.loginByWechat = function (callback) {
-      
+  this.loginByWechat = function (authorizePromise) {
+      return new Promise(function (resolve, reject) {
+         wx.login({
+           success: function (res) {
+             console.log(res);
+             if (res.code) {
+                //获取用户信息
+                //先问一下有没有权限
+                wx.getSetting({
+                  success: function (data) {
+                    if (!data.authSetting['scope.userInfo']) {
+                      reject({ error: "用户信息未授权，请点击登录按钮下方的授权按钮." });
+                    }
+                    else {
+                      wx.getUserInfo({
+                        success: function (data) {
+                          withCredentials: true,
+                            wx.request({
+                              url: consts.wxloginUrl,
+                              method: 'POST',
+                              header: {
+                                'content-type': 'application/x-www-form-urlencoded'
+                              },
+                              data: {
+                                code: res.code,
+                                encryptedData: data.encryptedData,
+                                iv: data.iv
+                              },
+                              success: function (data) {
+                                if (data.statusCode != 200) {
+                                  reject({ error: "向服务器发情请求失败,请尝试用户名密码登录." });
+                                }
+                                else {
+                                  //登录成功，拿到session、和状态，如果是新用户，导航到注册页面
+                                  resolve(data)
+                                }
+                              },
+                              fail: function (res) {
+                                reject({ error: "向服务器发情请求失败,请尝试用户名密码登录." });
+                              }
+                            })
+                        },
+                        fail: function (msg) {
+                          console.log(msg);
+                          reject({ error: "获取用户信息失败,请尝试用户名密码登录." });
+                        }
+                      })
+                    }
+                  },
+                  fail: function (res) {
+                    reject({ error: "获取微信设置失败,请尝试用户名密码登录." });
+                  }
+                })
+             }
+             else {
+               reject({error:res.errMsg});
+             }
+           },
+           fail: function (res) {
+             reject({ error: "微信登录失败,请尝试用户名密码登录."});
+           }
+         })
+      });
   }
   //用户密码登录
   this.loginByUsrnameAndPswd = function (usrname, pswd, callback) {

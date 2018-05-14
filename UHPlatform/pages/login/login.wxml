@@ -1,13 +1,23 @@
 <!--pages/login/login.wxml-->
 <view class='container'>
    <button bindtap="onLoginByWechat"> 微信登录 </button>
+   <view class = "hint"> 
+    <image src = "{{autorizehintimg}}" class = "hintimg"></image>
+    <button wx:if="{{canIUse}}" class = "hintbtn" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">登录遇到问题?点我授权</button>
+    <text wx:else class = "hinttext">登录遇到问题?点我授权</text>
+   </view>
+
    <view class = "split"> </view>
    <button bindtap="onLoginByUsrnameAndPsw"> 用户名密码登录 </button>
-   <view class = "split-10"> </view>
-   <view class = "signin-hint" bindtap='onSigninTaped'> 
-    <image src = "{{signinhintimage}}" class = "siginin-hint-img"></image>
-    <text class = "signin-hint-text"> 没有账号?点我注册吧</text>
+   <view class = "hint" bindtap='onSigninTaped'> 
+    <image src = "{{signinhintimage}}" class = "hintimg"></image>
+    <text class = "hinttext"> 没有账号?点我注册吧</text>
    </view>
    <view class = "split-60"> </view>
    <wxc-loadmore is-end="{{true}}" text="请您先登录"></wxc-loadmore>
+   <wxc-dialog class = 'errMsgDialog' 
+    title = "{{errorDialogTitle}}" 
+    content = "{{errorContent}}" 
+    confirm-text="确定" 
+    bindconfirm="oErrorDialogConfirm"></wxc-dialog>
 </view>

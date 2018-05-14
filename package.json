@@ -34,6 +34,8 @@
     "min": "^0.1.17",
     "morgan": "~1.9.0",
     "mysql2": "^1.5.2",
+    "promise": "^8.0.1",
+    "request": "^2.85.0",
     "sequelize": "^4.35.1",
     "serve-favicon": "~2.4.5"
   }
