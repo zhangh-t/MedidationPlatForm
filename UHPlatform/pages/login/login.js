@@ -94,6 +94,7 @@ Page({
     loginUtils.loginByWechat().then(function (data) {
       //登录成功
       wx.hideToast();
+      //是不是需要引导注册
     },
     function (data) {
       wx.hideToast();

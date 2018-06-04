@@ -30,11 +30,10 @@ function loginUtils() {
     })
   }
   //微信登录
-  this.loginByWechat = function (authorizePromise) {
+  this.loginByWechat = function () {
       return new Promise(function (resolve, reject) {
          wx.login({
            success: function (res) {
-             console.log(res);
              if (res.code) {
                 //获取用户信息
                 //先问一下有没有权限
@@ -51,7 +50,8 @@ function loginUtils() {
                               url: consts.wxloginUrl,
                               method: 'POST',
                               header: {
-                                'content-type': 'application/x-www-form-urlencoded'
+                                'content-type': 'application/x-www-form-urlencoded',
+                                'cookie': wx.getStorageSync("sessionid")//读取cookie
                               },
                               data: {
                                 code: res.code,
@@ -63,6 +63,8 @@ function loginUtils() {
                                   reject({ error: "向服务器发情请求失败,请尝试用户名密码登录." });
                                 }
                                 else {
+                                  console.log(data)
+                                  wx.setStorageSync("sessionid", data.header["set-cookie"])
                                   //登录成功，拿到session、和状态，如果是新用户，导航到注册页面
                                   resolve(data)
                                 }

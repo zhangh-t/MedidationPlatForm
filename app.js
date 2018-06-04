@@ -10,8 +10,7 @@ var users = require('./routes/users');
 var signin = require('./routes/signin');
 var login = require('./routes/login')
 var session = require('express-session');
-var sessionControl = require('./public/javascripts/sessioncontrol')
-
+var RedisStore = require('connect-redis')(session);
 var app = express();
 
 // view engine setup
@@ -28,10 +27,18 @@ app.use(cookieParser());
 //使用session会话控制
 app.use(session({
     secret: 'MedidationPlatFormCreatedByZhangh-tYouMotherfucker',   //cookie签名信息
-    coockie: {maxAge: 60 * 1000 * 30},                              //cookie有效期时长
-    resave:false,                                                   //是否在session没有被修改的时候保存
+    cookie: {maxAge: 60 * 1000 * 30, secure: false},                //cookie有效期时长
+    resave: true,                                                   //是否在session没有被修改的时候保存
     name:'MedidationPlatForm',                                      //cookie名称，不知道是不是
-    saveUninitialized:false                                         //是否强制创建一个未初始化的session
+    saveUninitialized:true,                                         //是否强制创建一个未初始化的session
+    store : new RedisStore({
+        host : "127.0.0.1",
+        port : "6379",
+        db : 1,
+        ttl : 1800,
+        logErrors : true,
+        pass : "84519300"
+    })
 }));
 
 
